@@ -1,0 +1,31 @@
+io:
+  input_dir: ../in
+acq:
+  top: right
+  scan_per_s: 28000
+flat_field:
+  go: true
+  write_image: false
+  window_size: 2944
+  step_size: 128
+enhance:
+  go: true
+  write_image: false
+  image_size: 4992
+  dark_threshold: 0
+  light_threshold: 85
+segment:
+  go: true
+  write_image: false
+  write_masked_image: false
+  method: percentile
+  threshold: 1.3
+  dilate: 5
+  min_area: 500
+measure:
+  go: true
+  write_image: true
+  properties:
+  - area
+  - bbox
+  - weighted_moments_hu
