@@ -3,29 +3,62 @@ io:
 acq:
   top: right
   scan_per_s: 28000
+  window_height_mm: 105
+subsampling:
+  subsampling_rate: 1
+  first_image: 1
 flat_field:
   go: true
-  write_image: false
-  window_size: 2944
-  step_size: 128
+  write_image: true
+  window_size: 8000
+  step_size: 1
 enhance:
   go: true
-  write_image: false
-  image_size: 4992
+  write_image: true
+  image_size: 10000
   dark_threshold: 0
-  light_threshold: 85
+  light_threshold: 40
 segment:
   go: true
-  write_image: false
-  write_masked_image: false
+  write_image: true
+  write_stack: true
+  stack_format:
+    - psd
+    - tif
+    - rgb
+  pipeline: regular
+  sem_model_path: model_final.pth
+  sem_conf_threshold: 0.6
+  sem_min_area: 50
+  sem_max_area: 300
   method: percentile
-  threshold: 1.3
-  dilate: 5
-  min_area: 500
+  threshold: 1.2
+  var_limit: 0.001
+  dilate: 3
+  erode: 2
+  reg_min_area: 300
+  reg_max_area: 400000
 measure:
   go: true
-  write_image: true
+  write_particles: true
+  as_tar: true
   properties:
+  - label
   - area
   - bbox
+  - convex_area
+  - filled_area
+  - eccentricity
+  - equivalent_diameter
+  - euler_number
+  - inertia_tensor_eigvals
+  - major_axis_length
+  - minor_axis_length
+  - max_intensity
+  - mean_intensity
+  - min_intensity
+  - moments_hu
   - weighted_moments_hu
+  - perimeter
+  - orientation
+  - centroid
