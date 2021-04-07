@@ -27,7 +27,8 @@ segment:
     - tif
     - rgb
   pipeline: regular
-  sem_model_path: model_final.pth
+  sem_model_path: ../model/model_final.pth
+  sem_model_config: ../model/model_cfg.yaml
   sem_conf_threshold: 0.6
   sem_min_area: 50
   sem_max_area: 300
