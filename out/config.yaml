@@ -5,7 +5,7 @@ acq:
   scan_per_s: 28000
   window_height_mm: 105
 subsampling:
-  subsampling_rate: 1
+  interval: 1
   first_image: 1
 flat_field:
   go: true
